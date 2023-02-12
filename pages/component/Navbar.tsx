@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from '../../public/logo';
+import Link from "next/link";
 type Props = {};
 
 const Navbar = (props: Props) => {
@@ -8,9 +9,9 @@ const Navbar = (props: Props) => {
         <div className="container">
             <div className="nav-container">
                 <div className="logo">
-                    <a href="/" className="logo-inner">
+                    <Link href="/" className="logo-inner">
                         <Logo />
-                    </a>
+                    </Link>
                 </div>
                 <ul className="menu">
                     <li>
