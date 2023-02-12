@@ -1,0 +1,36 @@
+
+nav {
+    background-color: $nav-bg;
+    border-bottom: 2px solid $clean-black;
+
+    .nav-container {
+        display: flex;
+        justify-content: space-around;
+        height: 50px;
+        align-items: center;
+
+        .logo {
+            a {
+                text-decoration: none;
+                color: $white;
+                font-weight: bolder;
+                font-size: 1.5rem;
+            }
+            svg {
+                width: 100px;
+                max-height: 35px;
+            }
+        }
+
+        .menu {
+            display: flex;
+            li {
+                margin: 0 1rem;
+                a {
+                    text-decoration: none;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
