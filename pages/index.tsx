@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import Trade from './screen/Trade'
+import Trade from './market/index'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 

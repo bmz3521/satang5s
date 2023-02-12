@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import Trade from "../screen/Trade";
+import Trade from "../market/index";
 
 const Post = (props: any) => {
   const router = useRouter()
