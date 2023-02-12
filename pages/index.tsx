@@ -1,10 +1,18 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import Layout from './component/Layout'
+import Trade from './screen/Trade'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  return <Layout/>
+    let history = useRouter();
+    useEffect(()=>{
+        if(location.pathname === '/'){
+            history.push("/market");
+        }
+    },[])
+  return <Trade query=''/>
 }

@@ -57,7 +57,7 @@ const CurrencyCard = ({isShow}: Props) => {
       description={describe[coinData?.symbol]?.name}
     />
     <div className={`middle-currency ${loading ? ' reload' : ''}`}>
-      ฿ {dollarUS.format(coinData?.lastPrice)}
+      ฿ {dollarUS.format(coinData?.lastPrice || 0)}
     </div>
     <div className="footer-card">Volume : {dollarUS.format(coinData?.volume)}</div>
   </Card>
