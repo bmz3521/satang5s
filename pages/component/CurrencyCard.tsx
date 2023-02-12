@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Avatar, Card } from "antd";
 import { getPrice } from '../store/price/saga';
 import { connect } from 'react-redux';
-import * as CurrencyFormat from 'react-currency-format';
 
 interface Props {
   isShow : string;
