@@ -15,10 +15,10 @@ const Navbar = (props: Props) => {
                 </div>
                 <ul className="menu">
                     <li>
-                        <a href="/">FACEBOOK</a>
+                        <Link href="/">FACEBOOK</Link>
                     </li>
                     <li>
-                        <a href="/">GITHUB</a>
+                        <Link href="/">GITHUB</Link>
                     </li>
                 </ul>
             </div>
