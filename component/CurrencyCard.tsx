@@ -3,10 +3,8 @@ import { Avatar, Card } from "antd";
 import { connect } from 'react-redux';
 import { useSelector,useDispatch } from 'react-redux';
 import { priceRequest } from "../store/price/actions";
+import { Currency } from 'pages/Models/index';
 
-interface Props {
-  isShow : string;
-}
 
 const { Meta } = Card;
 const describe:any = {
@@ -26,7 +24,7 @@ const describe:any = {
 
 let dollarUS:any = Intl.NumberFormat('en-US');
 
-const CurrencyCard = ({isShow}: Props) => {
+const CurrencyCard = ({isShow}: Currency) => {
   const [coinData, setCoinData] = useState<any>(null);
   const [loading, setLoading] = useState<any>(false);
   const [image, setImage] = useState<any>(describe.btc_thb.imageURL);

@@ -3,18 +3,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { priceRequest } from "../store/price/actions";
+import { Symbol } from 'pages/Models/index';
 
-type Props = {};
-
-interface Currency {
-  item: item;
-  active: string;
-}
-interface item {
-  id: number;
-  name: string ;
-}
-const SelecterCard = ({ item, active }: Currency) => {
+const SelecterCard = ({ item, active }: Symbol) => {
   const router = useRouter();
   const pathName = item.name.replaceAll("/", "_");
   const id = router.query.id;

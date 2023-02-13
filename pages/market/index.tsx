@@ -2,20 +2,17 @@ import React from 'react'
 import CurrencyCard from '../../component/CurrencyCard';
 import SelecterCard from '../../component/SelecterCard';
 import { Col, Row, Layout } from 'antd';
-
+import { Market } from '../Models/index';
 const { Content } = Layout;
-interface Props {
-  query : string;
-}
 
-const Trade = ({query}: Props) => {
+const Market = ({query}: Market) => {
   const currency = [
     { id : 0 , name : 'BTC/THB'},
     { id : 1 , name : 'BUSD/THB'},
     { id : 2 , name : 'USDT/THB'}
   ]
   return (
-    <section className="container-trade">
+    <section className="container-Market">
       <Row className='market'>
         <Col className='selecter-container gutter'>
           {
@@ -32,4 +29,4 @@ const Trade = ({query}: Props) => {
   )
 }
 
-export default Trade
+export default Market

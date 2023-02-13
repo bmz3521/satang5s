@@ -1,6 +1,6 @@
 import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
 import createSagaMiddleware from 'redux-saga';
-import logger from 'redux-logger';
+import logger from 'redux-logger';// open during use
 
 import rootReducer from './rootReducer';
 import { rootSaga } from './rootSaga';
