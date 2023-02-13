@@ -26,9 +26,11 @@ section {
         }
         .selecter-container {
             display: grid;
-            margin-right: 50px;
+            align-items: center;
         }
-
+        .gutter {
+            padding: 30px;
+        }
         .inner-card {
             display: flex;
             flex-direction: column;

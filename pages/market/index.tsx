@@ -1,6 +1,7 @@
 import React from 'react'
 import CurrencyCard from '../../component/CurrencyCard';
 import SelecterCard from '../../component/SelecterCard';
+import { Col, Row } from 'antd';
 interface Props {
   query : string;
 }
@@ -13,16 +14,18 @@ const Trade = ({query}: Props) => {
   ]
   return (
     <section className="container-trade">
-      <div className='market'>
-        <div className='selecter-container'>
+      <Row className='market'>
+        <Col className='selecter-container gutter'>
           {
             currency.map((item)=>(
               <SelecterCard key={item.id} item={item} active={query}/>
             ))
           }
-        </div>
-        <CurrencyCard isShow={query}/>
-      </div>
+        </Col>
+        <Col className='gutter'>
+          <CurrencyCard isShow={query}/>
+        </Col>
+      </Row>
     </section>
   )
 }
