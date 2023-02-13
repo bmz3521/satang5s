@@ -2,7 +2,7 @@ import React from 'react'
 import CurrencyCard from '../../component/CurrencyCard';
 import SelecterCard from '../../component/SelecterCard';
 import { Col, Row, Layout } from 'antd';
-import { Market } from '../Models/index';
+import { Market } from '../../Models/index';
 const { Content } = Layout;
 
 const Market = ({query}: Market) => {

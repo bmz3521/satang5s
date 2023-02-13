@@ -3,7 +3,7 @@ import { Avatar, Card } from "antd";
 import { connect } from 'react-redux';
 import { useSelector,useDispatch } from 'react-redux';
 import { priceRequest } from "../store/price/actions";
-import { Currency } from 'pages/Models/index';
+import { Currency } from '@/Models/index';
 
 
 const { Meta } = Card;

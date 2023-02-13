@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { priceRequest } from "../store/price/actions";
-import { Symbol } from 'pages/Models/index';
+import { Symbol } from '@/Models/index';
 
 const SelecterCard = ({ item, active }: Symbol) => {
   const router = useRouter();
