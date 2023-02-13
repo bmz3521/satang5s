@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { useSelector,useDispatch } from 'react-redux';
 import { priceRequest } from "../store/price/actions";
 import { Currency } from '@/Models/index';
-
+import { useRouter } from "next/router";
 
 const { Meta } = Card;
 const describe:any = {
@@ -25,12 +25,16 @@ const describe:any = {
 let dollarUS:any = Intl.NumberFormat('en-US');
 
 const CurrencyCard = ({isShow}: Currency) => {
+  const router = useRouter();
+  const id = router.query?.id?.toString().replaceAll("/", "_");
+  const symbol = id ? id.toLowerCase() : "btc_thb"
   const [coinData, setCoinData] = useState<any>(null);
-  const [loading, setLoading] = useState<any>(false);
-  const [image, setImage] = useState<any>(describe.btc_thb.imageURL);
   const price = useSelector((state:any) => state.price);
+  const [loading, setLoading] = useState<any>(price.pending);
+  const [image, setImage] = useState<any>(describe.btc_thb.imageURL);
   const dispatch = useDispatch();
   useEffect(()=> {
+    dispatch(priceRequest({symbol : isShow?.toLowerCase() || symbol}))
     if(price.lastPrice !== 0){
       setCoinData(price);
       setImage(describe[price?.symbol]?.imageURL)
@@ -40,7 +44,7 @@ const CurrencyCard = ({isShow}: Currency) => {
 
   useEffect(()=> {
     const interval = setInterval(() => {
-      dispatch(priceRequest({symbol : isShow?.toLowerCase() || 'btc_thb'}))
+      dispatch(priceRequest({symbol : isShow?.toLowerCase() || symbol}))
     }, 5000);
 
     return () => clearInterval(interval);

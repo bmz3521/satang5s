@@ -18,7 +18,7 @@ const SelecterCard = ({ item, active }: Symbol) => {
     
   useEffect(()=> {
       onFetchPrice()
-  },[])
+  },[pathName])
 
   return (
     <Link
