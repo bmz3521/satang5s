@@ -30,7 +30,7 @@ const reducers = (state = initialState, action: PriceActions) => {
             }
         case GET_PRICE_SUCCESS:
             return {
-                ...state,
+                ...action.params,
                 pending : false,
                 error : null
             }

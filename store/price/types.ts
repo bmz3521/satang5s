@@ -13,7 +13,7 @@ export interface PriceState {
 }
 
 export interface GetPriceRequestPayload {
-    params : { symbol:string }
+     symbol:string 
 }
 
 export interface GetPriceSuccessPayload {

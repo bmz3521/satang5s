@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Avatar, Card } from "antd";
-import { getPrice } from '../store/price/saga';
 import { connect } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { priceRequest } from "../store/price/actions";
 
 interface Props {
   isShow : string;
@@ -26,37 +27,35 @@ const describe:any = {
 let dollarUS:any = Intl.NumberFormat('en-US');
 
 const CurrencyCard = ({isShow}: Props) => {
-  const [loading, setLoading] = useState(true);
   const [coinData, setCoinData] = useState<any>(null);
+  const [loading, setLoading] = useState<any>(false);
+  const [image, setImage] = useState<any>(describe.btc_thb.imageURL);
+  const price = useSelector((state:any) => state.price);
+  const dispatch = useDispatch();
+  useEffect(()=> {
+    if(price.lastPrice !== 0){
+      setCoinData(price);
+      setImage(describe[price?.symbol]?.imageURL)
+      setLoading(false)
+    }else setLoading(true)
+  },[isShow , price.lastPrice])
 
   useEffect(()=> {
-    setLoading(true)
-    initialFunc();
-  },[isShow])
-  
-  useEffect(()=> {
     const interval = setInterval(() => {
-      setLoading(true)
-      initialFunc();
+      dispatch(priceRequest({symbol : isShow?.toLowerCase() || 'btc_thb'}))
     }, 5000);
 
     return () => clearInterval(interval);
   },[isShow])
 
-
-  const initialFunc = async () => {
-    const data = await getPrice({symbol : isShow});
-    setCoinData(data)
-    setLoading(false) 
-  };
   return (
-    <Card className="inner-card">
+    <Card className="inner-card" loading={loading}>
     <Meta
-      avatar={<Avatar src={describe[coinData?.symbol]?.imageURL} />}
+      avatar={<Avatar src={image} />}
       title={isShow?.replace('_','/') || "BTC/THB"}
       description={describe[coinData?.symbol]?.name}
     />
-    <div className={`middle-currency ${loading ? ' reload' : ''}`}>
+    <div className={`middle-currency ${price.pending ? ' reload' : ''}`}>
       ฿ {dollarUS.format(coinData?.lastPrice || '')}
     </div>
     <div className="footer-card">Volume : {dollarUS.format(coinData?.volume)}</div>
@@ -64,8 +63,5 @@ const CurrencyCard = ({isShow}: Props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch:any) => ({
-  getPrice:( params:any ) => dispatch(getPrice(params))
-})
 
-export default connect(null, mapDispatchToProps)(CurrencyCard);
+export default CurrencyCard;

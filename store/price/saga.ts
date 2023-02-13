@@ -14,20 +14,14 @@ export const getPrice = async (params:{ symbol:string }) => {
     const { data } = await axios.get<PriceState>(
         `https://satangcorp.com/api/v3/ticker/24hr?symbol=${params.symbol || 'btc_thb'}`,
         );
-        // console.log('data ===',data)
-        
         return data
     }
     
     //------------------------------------------ saga --------------------------------
     
     function* priceRequestSaga(action:any){
-    console.log('action ===',action)
     try{
-        const response:{data:PriceState} = yield call(getPrice, {
-            symbol : action.params.symbol
-        });
-        console.log('response naja =',response)
+        const response:{data:PriceState} = yield call(getPrice, action.params);
         yield put(priceSuccess(response));
     }catch (e : any) {
         yield put(priceFailure({
